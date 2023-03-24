@@ -358,12 +358,22 @@
   <ng-template #msgVrai>Bonjour {{nom}}</ng-template>
   <ng-template #msgFaux>Hello World</ng-template>
 
-  <p *ngIf=" elem; then login; else logout "></p>
-  <ng-template #login> <button>Login</button></ng-template>
-  <ng-template #logout><button>Logout</button></ng-template>
+  <p *ngIf=" elem ==1 ; then vrai; else faux "></p>
+    <ng-template #vrai> <button>Login</button></ng-template>
+    <ng-template #faux><button>Logout</button></ng-template>
+ 
 
-  <table *ngFor=" let e of etudiants; let i=index; let f=first; let l=last" >
-       {{i}} - {{e.nom}} - {{e.prenom}} - {{e.age}} - {{f}} - {{l}} 
+  <table >
+    <th>Id</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Age</th>
+    <tr *ngFor=" let e of etudiants; let i=index; let f=first; let l=last; let isEven=even" class="{{choixClass(f,l,isEven)}}" >
+      <td>{{i+1}}</td>
+      <td>{{e.nom}}</td>
+      <td>{{e.prenom}}</td>
+      <td>{{e.age}}</td>
+    </tr>    
   </table>
  
 

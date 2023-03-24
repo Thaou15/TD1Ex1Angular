@@ -350,9 +350,23 @@
 
   </div>
 
-  <!-- Resources -->
-  <h2>Resources</h2>
-  <p>Here are some links to help you get started:</p>
+  <!-- Début  TD1 Ex1 -->
+  
+  <h1>Bonjour {{nom}}</h1>
+  <p> Verification :  {{ verif ? "vrai" : "faux"}}</p>
+  <p *ngIf=" verif; then msgVrai; else msgFaux "></p>
+  <ng-template #msgVrai>Bonjour {{nom}}</ng-template>
+  <ng-template #msgFaux>Hello World</ng-template>
+
+  <p *ngIf=" elem; then login; else logout "></p>
+  <ng-template #login> <button>Login</button></ng-template>
+  <ng-template #logout><button>Logout</button></ng-template>
+
+  <table *ngFor=" let e of etudiants; let i=index; let f=first; let l=last" >
+       {{i}} - {{e.nom}} - {{e.prenom}} - {{e.age}} - {{f}} - {{l}} 
+  </table>
+ 
+
 
   <div class="card-container">
     <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
@@ -473,12 +487,6 @@
 
 </div>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
 
 <router-outlet></router-outlet>
